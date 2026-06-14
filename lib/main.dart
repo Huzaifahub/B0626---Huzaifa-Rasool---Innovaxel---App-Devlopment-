@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MyApp());
 }
-
-// ─── MODEL ───────────────────────────────────────────────
 class Expense {
   String id;
   String title;
@@ -25,7 +23,6 @@ class Expense {
   });
 }
 
-// ─── CONSTANTS ────────────────────────────────────────────
 const kPrimary    = Color(0xFF1C3557); // Deep Navy
 const kAccent     = Color(0xFFF5A623); // Gold
 const kBg         = Color(0xFFF0F4F8); // Light blue-grey bg
@@ -56,7 +53,6 @@ const kCategoryItems = {
   'Other':     ['Entertainment', 'Education', 'Gift', 'Salon', 'Charity', 'Miscellaneous'],
 };
 
-// ─── APP ─────────────────────────────────────────────────
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -76,7 +72,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// ─── MAIN SCREEN ─────────────────────────────────────────
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
   @override
@@ -130,7 +125,6 @@ class _MainScreenState extends State<MainScreen> {
   }
 }
 
-// ─── HOME SCREEN ──────────────────────────────────────────
 class HomeScreen extends StatefulWidget {
   final List<Expense> expenses;
   final Function(String) onDelete;
@@ -255,7 +249,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ]),
         ),
 
-        // ── Filter chips ──
         Container(
           color: Colors.white,
           padding: const EdgeInsets.symmetric(vertical: 10),
@@ -292,7 +285,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
 
-        // ── Expense list ──
         Expanded(
           child: filtered.isEmpty
               ? Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -412,7 +404,7 @@ class _HomeScreenState extends State<HomeScreen> {
       );
 }
 
-// ─── ADD SCREEN ───────────────────────────────────────────
+
 class AddScreen extends StatefulWidget {
   final Function(Expense) onAdd;
   const AddScreen({super.key, required this.onAdd});
@@ -627,7 +619,6 @@ class _AddScreenState extends State<AddScreen> {
   }
 }
 
-// ─── EDIT SCREEN ──────────────────────────────────────────
 class EditScreen extends StatefulWidget {
   final Expense expense;
   final Function(Expense) onUpdate;
@@ -796,7 +787,6 @@ class _EditScreenState extends State<EditScreen> {
   }
 }
 
-// ─── SUMMARY SCREEN ───────────────────────────────────────
 class SummaryScreen extends StatelessWidget {
   final List<Expense> expenses;
   const SummaryScreen({super.key, required this.expenses});
@@ -943,7 +933,6 @@ class SummaryScreen extends StatelessWidget {
   }
 }
 
-// ─── SHARED HELPERS ───────────────────────────────────────
 Widget _card({required String label, required Widget child}) => Container(
   padding: const EdgeInsets.all(16),
   decoration: BoxDecoration(
@@ -983,7 +972,7 @@ final _months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','No
 String _date(DateTime d)  => '${d.day} ${_months[d.month - 1]} ${d.year}';
 String _date2(DateTime d) => '${d.day.toString().padLeft(2, '0')} ${_months[d.month - 1]} ${d.year}';
 
-// ─── PAY SCREEN ───────────────────────────────────────────
+
 class PayScreen extends StatefulWidget {
   const PayScreen({super.key});
   @override
@@ -1188,7 +1177,7 @@ class _PayScreenState extends State<PayScreen> {
             ),
             const SizedBox(height: 14),
 
-            // ── Account / Number ──
+
             if (_selectedMethod != null) ...[
               _card(
                 label: '${_activeMethod!['label']} *',
@@ -1209,7 +1198,7 @@ class _PayScreenState extends State<PayScreen> {
               const SizedBox(height: 14),
             ],
 
-            // ── Summary box ──
+
             if (_selectedMethod != null)
               Container(
                 padding: const EdgeInsets.all(16),
@@ -1233,7 +1222,6 @@ class _PayScreenState extends State<PayScreen> {
 
             const SizedBox(height: 24),
 
-            // ── Pay Button ──
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
